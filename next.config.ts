@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
   distDir: 'docs',
   trailingSlash: true,
   basePath: '/semana-treino',
+  assetPrefix: '/semana-treino/',
 };
 
 export default nextConfig;
