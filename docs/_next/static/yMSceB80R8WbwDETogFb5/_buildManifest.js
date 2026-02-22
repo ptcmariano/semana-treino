@@ -3,7 +3,7 @@ self.__BUILD_MANIFEST = {
     "afterFiles": [],
     "beforeFiles": [
       {
-        "source": "/semana-treino//_next/:path+",
+        "source": "/semana-treino/_next/static//_next/:path+",
         "destination": "/semana-treino/_next/:path+"
       }
     ],
