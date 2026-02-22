@@ -1,16 +1,21 @@
 'use client';
 
 import { useWorkoutStore } from '@/hooks/useWorkoutStore';
-import { RefreshCcw, AlertTriangle } from 'lucide-react';
+import { RefreshCcw, AlertTriangle, Wand2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function ClearWeekPage() {
-    const { clearWeek, exercises, isLoaded } = useWorkoutStore();
+    const { clearWeek, generateCoachWorkout, exercises, isLoaded } = useWorkoutStore();
     const router = useRouter();
 
     const handleClear = () => {
         clearWeek();
         // Redirect to list after clearing
+        router.push('/');
+    };
+
+    const handleGenerate = () => {
+        generateCoachWorkout();
         router.push('/');
     };
 
@@ -30,21 +35,32 @@ export default function ClearWeekPage() {
                 </p>
             </div>
 
-            <button
-                onClick={handleClear}
-                className="btn-primary btn-large bg-blue-600 hover:bg-blue-500 group"
-                aria-label="Limpar semana"
-            >
-                <RefreshCcw size={24} className="group-active:rotate-180 transition-transform duration-500" />
-                <span>Limpar Semana</span>
-            </button>
+            <div className="flex flex-col items-center gap-6 w-full max-w-xs">
+                <button
+                    onClick={handleClear}
+                    className="btn-primary btn-large bg-blue-600 hover:bg-blue-500 group w-full"
+                    aria-label="Limpar semana"
+                >
+                    <RefreshCcw size={24} className="group-active:rotate-180 transition-transform duration-500" />
+                    <span>Limpar Semana</span>
+                </button>
 
-            <button
-                onClick={() => router.back()}
-                className="text-slate-500 font-medium hover:text-slate-400 transition-colors"
-            >
-                Voltar
-            </button>
+                <button
+                    onClick={() => router.back()}
+                    className="text-slate-500 font-medium hover:text-slate-400 transition-colors"
+                >
+                    Voltar
+                </button>
+
+                <button
+                    onClick={handleGenerate}
+                    className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all active:scale-95"
+                    aria-label="Gerar treino"
+                >
+                    <Wand2 size={20} className="text-blue-400" />
+                    <span className="font-semibold uppercase tracking-wider text-sm">Gerar treino coach</span>
+                </button>
+            </div>
         </div>
     );
 }

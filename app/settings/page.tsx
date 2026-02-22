@@ -70,12 +70,17 @@ export default function SettingsPage() {
             </form>
 
             <div className="pt-10 border-t border-white/5">
-                <div className="glass p-6 rounded-3xl space-y-2">
-                    <h3 className="font-bold text-slate-300">Sobre o App</h3>
-                    <p className="text-sm text-slate-500 leading-relaxed">
-                        Seu progresso é salvo automaticamente no seu navegador. Nenhuma informação é enviada para servidores, garantindo sua privacidade.
-                    </p>
-                </div>
+                <a href="https://www.instagram.com/paulinho.apps/" target="_blank">
+                    <div className="glass p-6 rounded-3xl space-y-2">
+                        <h3 className="font-bold text-slate-300">Sobre o App</h3>
+                        <p className="text-sm text-slate-500 leading-relaxed">
+                            Feito com amor ❤️ por @paulinho.apps
+                        </p>
+                        <p className="text-sm text-slate-500 leading-relaxed">
+                            Seu progresso é salvo automaticamente no seu navegador. Nenhuma informação é enviada para servidores, garantindo sua privacidade.
+                        </p>
+                    </div>
+                </a>
             </div>
         </div>
     );

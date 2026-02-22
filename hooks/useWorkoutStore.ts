@@ -54,8 +54,6 @@ export function useWorkoutStore() {
             createdAt: Date.now(),
         };
 
-        // Add to the beginning (or where appropriate)
-        // New items usually at the top unless they are done
         const updated = [newExercise, ...exercises];
         saveExercises(updated);
     };
@@ -68,17 +66,43 @@ export function useWorkoutStore() {
             return ex;
         });
 
-        // Re-order: Move done items to the end
         const pending = updated.filter(ex => !ex.done);
         const completed = updated.filter(ex => ex.done);
-
-        // Optional: Sort completed by done status or keeps their relative order
         saveExercises([...pending, ...completed]);
     };
 
     const clearWeek = () => {
         const updated = exercises.map(ex => ({ ...ex, done: false }));
         saveExercises(updated);
+    };
+
+    const generateCoachWorkout = () => {
+        const coachExercises: string[] = [
+            "Supino reto (Peito)",
+            "Supino inclinado (Peito)",
+            "Tríceps pulley (Tríceps)",
+            "Puxada frontal (Costas)",
+            "Remada curvada (Costas)",
+            "Rosca direta (Bíceps)",
+            "Agachamento livre (Pernas)",
+            "Leg press (Pernas)",
+            "Elevação de panturrilha (Pernas)",
+            "Desenvolvimento com halteres (Ombros)",
+            "Elevação lateral (Ombros)",
+            "Abdominal tradicional (Abdômen)",
+            "Stiff (Pernas/Glúteos)",
+            "Mesa flexora (Pernas)",
+            "Prancha isométrica (Abdômen)"
+        ];
+
+        const newExercises: Exercise[] = coachExercises.map((name, index) => ({
+            id: crypto.randomUUID(),
+            name,
+            done: false,
+            createdAt: Date.now() + index,
+        }));
+
+        saveExercises(newExercises);
     };
 
     const updateSettings = (newSettings: Settings) => {
@@ -93,6 +117,7 @@ export function useWorkoutStore() {
         addExercise,
         toggleExercise,
         clearWeek,
+        generateCoachWorkout,
         updateSettings,
     };
 }

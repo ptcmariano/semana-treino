@@ -1,2 +1,2 @@
-:HL["/semana-treino/_next/static/chunks/f3918f3b77fab985.css","style"]
-0:{"buildId":"nNVrSsYj6792MO7sG6XO3","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+:HL["/semana-treino/_next/static/chunks/8157072b666692aa.css","style"]
+0:{"buildId":"Vf0jazkplVX7wkHsqCGM0","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
