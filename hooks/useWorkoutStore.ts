@@ -77,23 +77,26 @@ export function useWorkoutStore() {
     };
 
     const generateCoachWorkout = () => {
-        const coachExercises: string[] = [
-            "Supino reto (Peito)",
-            "Supino inclinado (Peito)",
-            "Tríceps pulley (Tríceps)",
-            "Puxada frontal (Costas)",
-            "Remada curvada (Costas)",
-            "Rosca direta (Bíceps)",
-            "Agachamento livre (Pernas)",
-            "Leg press (Pernas)",
-            "Elevação de panturrilha (Pernas)",
-            "Desenvolvimento com halteres (Ombros)",
-            "Elevação lateral (Ombros)",
-            "Abdominal tradicional (Abdômen)",
-            "Stiff (Pernas/Glúteos)",
-            "Mesa flexora (Pernas)",
-            "Prancha isométrica (Abdômen)"
-        ];
+        const storedCoachExercises = localStorage.getItem('coach_exercises');
+        const coachExercises: string[] = storedCoachExercises
+            ? JSON.parse(storedCoachExercises)
+            : [
+                "Supino reto (Peito)",
+                "Supino inclinado (Peito)",
+                "Tríceps pulley (Tríceps)",
+                "Puxada frontal (Costas)",
+                "Remada curvada (Costas)",
+                "Rosca direta (Bíceps)",
+                "Agachamento livre (Pernas)",
+                "Leg press (Pernas)",
+                "Elevação de panturrilha (Pernas)",
+                "Desenvolvimento com halteres (Ombros)",
+                "Elevação lateral (Ombros)",
+                "Abdominal tradicional (Abdômen)",
+                "Stiff (Pernas/Glúteos)",
+                "Mesa flexora (Pernas)",
+                "Prancha isométrica (Abdômen)"
+            ];
 
         const newExercises: Exercise[] = coachExercises.map((name, index) => ({
             id: crypto.randomUUID(),
