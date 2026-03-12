@@ -3,9 +3,10 @@
 import { useState } from 'react';
 import { useWorkoutStore } from '@/hooks/useWorkoutStore';
 import { Plus, Check, Square } from 'lucide-react';
+import { PointsNotification } from '@/components/PointsNotification';
 
 export default function ListPage() {
-  const { exercises, settings, isLoaded, addExercise, toggleExercise } = useWorkoutStore();
+  const { exercises, settings, isLoaded, addExercise, toggleExercise, gamification, lastPointsGained } = useWorkoutStore();
   const [newExercise, setNewExercise] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -26,10 +27,22 @@ export default function ListPage() {
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <header className="space-y-2">
-        <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
-          {settings.headerText}
-        </h1>
+      {lastPointsGained && (
+        <PointsNotification 
+            amount={lastPointsGained.amount} 
+            message={lastPointsGained.message} 
+        />
+      )}
+      <header className="space-y-2 relative">
+        <div className="flex items-center justify-between">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+            {settings.headerText}
+            </h1>
+            <div className="bg-gradient-to-br from-yellow-400 to-orange-500 px-3 py-1.5 rounded-xl shadow-lg shadow-yellow-900/20 flex items-center gap-2 border border-white/10">
+                <span className="text-white text-xs font-black uppercase tracking-tighter">LVL</span>
+                <span className="text-white font-black text-lg leading-none">{gamification.level}</span>
+            </div>
+        </div>
         <p className="text-slate-400 font-medium">
           {exercises.length === 0
             ? "Comece adicionando um exercício"

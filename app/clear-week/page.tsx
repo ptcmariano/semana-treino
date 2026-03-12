@@ -2,6 +2,7 @@
 
 import { useWorkoutStore } from '@/hooks/useWorkoutStore';
 import { RefreshCcw, AlertTriangle, Wand2, Plus, Trash2 } from 'lucide-react';
+import { PointsNotification } from '@/components/PointsNotification';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
@@ -17,7 +18,7 @@ const DEFAULT_COACH_EXERCISES = [
 ];
 
 export default function ClearWeekPage() {
-    const { clearWeek, generateCoachWorkout, exercises, isLoaded } = useWorkoutStore();
+    const { clearWeek, generateCoachWorkout, exercises, isLoaded, lastPointsGained } = useWorkoutStore();
     const router = useRouter();
     const [coachExercises, setCoachExercises] = useState<string[]>([]);
     const [newExercise, setNewExercise] = useState('');
@@ -65,6 +66,12 @@ export default function ClearWeekPage() {
 
     return (
         <div className="max-w-xl mx-auto py-12 px-4 space-y-12 animate-in fade-in zoom-in-95 duration-500 min-h-[70vh]">
+            {lastPointsGained && (
+                <PointsNotification 
+                    amount={lastPointsGained.amount} 
+                    message={lastPointsGained.message} 
+                />
+            )}
             <div className="text-center space-y-4">
                 <div className="bg-yellow-500/10 p-6 rounded-full inline-block mb-4 border border-yellow-500/20">
                     <AlertTriangle size={48} className="text-yellow-500" />

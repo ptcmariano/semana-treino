@@ -8,3 +8,5 @@ export interface Exercise {
 export interface Settings {
   headerText: string;
 }
+
+export * from './gamification';

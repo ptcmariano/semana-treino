@@ -2,15 +2,16 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { List, CheckSquare, Settings as SettingsIcon } from 'lucide-react';
+import { List, CheckSquare, Trophy, Settings as SettingsIcon } from 'lucide-react';
 
 export function BottomNav() {
     const pathname = usePathname();
 
     const navItems = [
         { href: '/', label: 'Lista', icon: List },
-        { href: '/clear-week', label: 'Limpar', icon: CheckSquare },
-        { href: '/settings', label: 'Ajustes', icon: SettingsIcon },
+        { href: '/progress/', label: 'Progresso', icon: Trophy },
+        { href: '/clear-week/', label: 'Limpar', icon: CheckSquare },
+        { href: '/settings/', label: 'Ajustes', icon: SettingsIcon },
     ];
 
     return (
