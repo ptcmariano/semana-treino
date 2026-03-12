@@ -88,7 +88,7 @@ export default function ClearWeekPage() {
                 <button
                     onClick={handleGenerate}
                     className="flex items-center justify-center gap-2 w-full px-6 py-4 rounded-2xl bg-white/5 border border-white/10 text-slate-300 hover:bg-white/10 transition-all active:scale-95"
-                    aria-label="Gerar treino"
+                    aria-label="Gerar treino coach"
                 >
                     <Wand2 size={24} className="text-blue-400" />
                     <span className="font-semibold uppercase tracking-wider text-sm">Gerar treino coach</span>
